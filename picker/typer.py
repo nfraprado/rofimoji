@@ -1,6 +1,9 @@
 from subprocess import run
 
-from picker.abstractionhelper import is_wayland, is_installed
+try:
+    from picker.abstractionhelper import is_wayland, is_installed
+except ModuleNotFoundError:
+    from abstractionhelper import is_wayland, is_installed
 
 
 class Typer:
@@ -47,13 +50,17 @@ class XDoToolTyper(Typer):
                    encoding='utf-8').stdout[:-1]
 
     def type_characters(self, characters: str, active_window: str) -> None:
+        fuck = run(['xdotool', 'getwindowname', active_window], capture_output=True, encoding='utf-8').stdout[:-1]
+
+        print(f"{active_window} - {fuck}")
+
         run([
             'xdotool',
             'type',
             '--clearmodifiers',
             '--window',
             active_window,
-            characters
+            active_window
         ])
 
     def insert_from_clipboard(self, active_window: str) -> None:
