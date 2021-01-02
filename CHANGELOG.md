@@ -1,5 +1,6 @@
 # [NEXT]
 ## Added
+- rofimoji now also works with [wofi](https://hg.sr.ht/~scoopta/wofi/). (#53)
 - rofimoji now has a manpage. (#57)
 - There's a new file for [Nerd Font icons](https://www.nerdfonts.com/).
 
